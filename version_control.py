@@ -7,7 +7,14 @@ def encode(password):
 
 def decode(encrypted_password):
     # TODO: decode implementation for Mr. Squires
-    pass
+    decoded = ""
+    for char in encrypted_password:
+        new = int(char) - 3
+        if new < 0:
+            decoded += str(new)[1]
+        else:
+            decoded += str(new)
+    return decoded
 
 
 password = None
@@ -21,12 +28,13 @@ while True:
 
     option = input("Please enter an option: ")
 
-    if option == 1:
+    if int(option) == 1:
         password = input("Please enter your password to encode: ")
         encode(password)
         print("Your password has been encoded and stored!")
-    elif option == 2:
+    elif int(option) == 2:
         # TODO: decode implementation for Mr. Squires
+        password = decode(encoded)
         print(f"The encoded password is {encoded}, and the original password is {password}")
     else:
         break
